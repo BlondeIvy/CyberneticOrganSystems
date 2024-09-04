@@ -1,4 +1,4 @@
-package com.cybernetic;
+package com.cyberorgansystem;
 
 public class Main {
     public static void main(String[] args) {
