@@ -14,12 +14,12 @@ public class CyberneticOrgan {
     }
 
     public String getDetails() {
-        StringBuilder patient = new StringBuilder();
-        patient.append("Id: ").append(id);
-        patient.append("\nModel: ").append(model);
-        patient.append("\nFunctionality: ").append(functionality);
-        patient.append("\nCompatibility: ").append(compatibility);
-        return patient.toString();
+        StringBuilder info = new StringBuilder();
+        info.append("Id: ").append(id);
+        info.append("\nModel: ").append(model);
+        info.append("\nFunctionality: ").append(functionality);
+        info.append("\nCompatibility: ").append(compatibility);
+        return info.toString();
     }
 
     public boolean isCompatible(String patientCompatibility) {
@@ -29,4 +29,7 @@ public class CyberneticOrgan {
     public String getModel(){
         return model;
     }
+
+    public String getFunctionality(){
+        return functionality; }
 }

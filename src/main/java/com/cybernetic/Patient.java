@@ -1,45 +1,53 @@
 package com.cyberorgansystem;
 
-
 import java.util.ArrayList;
-import java.util.List;
-
 
 public class Patient {
-
     private String name;
     private int age;
     private String medicalHistory;
-    private List<CyberneticOrgan> installedOrgans;
+    private CyberneticOrgan[] installedOrgans;
+        private int organTally;
+        private final int organsCap = 5;
 
     public Patient(String name, int age, String medicalHistory) {
         this.name = name;
         this.age = age;
         this.medicalHistory = medicalHistory;
-        this.installedOrgans = new ArrayList<>(); // initializes for individual patients organ list.
+        this.installedOrgans = new CyberneticOrgan[organsCap];
+        this.organTally = 0;
     }
 
-    public void addOrgan(CyberneticOrgan organ) {
-        installedOrgans.add(organ);
-        System.out.println(" The Organ added to " + name + "'s Installed Organs List");
+    public String addOrgan(CyberneticOrgan organ) {
+        if (organTally < installedOrgans.length) {
+            installedOrgans[organTally++] = organ;
+            return " The Organ added to " + name + "'s Installed Organs List.";
+        }
+        return " There is no more space left in the Installed Organs List.";
+    }
 
+    public ArrayList<CyberneticOrgan> getOrganList() {
+        ArrayList<CyberneticOrgan> listOfOrgans = new ArrayList<>();
+        for (int i =0;i < organTally; i++){
+            listOfOrgans.add(installedOrgans[i]);
+        }
+        return listOfOrgans;
     }
 
     public String getPatientInfo() {
-        StringBuilder info = new StringBuilder();
-        info.append("Name: ").append(name);
-        info.append("\nAge: ").append(age);
-        info.append("\nMedical History: ").append(medicalHistory);
-        info.append("\nInstalled Organs: ");
-            if (info.isEmpty()) {
-                info.append("\n  No organs installed");
-             }
-            else {
-                for (CyberneticOrgan organ : installedOrgans) {
-                info.append("\n  - ").append(organ.getDetails());
+            StringBuilder data = new StringBuilder();
+            data.append("Name: ").append(name);
+            data.append("\nAge: ").append(age);
+            data.append("\nMedical History: ").append(medicalHistory);
+            data.append("\nInstalled Organs: ");
+                if (organTally == 0) {
+                    data.append("\n  No organs installed");
+                 } else {
+                    for (int i=0; i < organTally; i++) {
+                        data.append("\n  - ").append(installedOrgans[i].getDetails());
+                    }
                 }
-             }
-            return info.toString();
-    }
+            return data.toString();
+        }
 
-}
+    }
