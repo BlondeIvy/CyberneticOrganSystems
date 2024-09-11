@@ -20,6 +20,17 @@ public class OrganInventory {
         return inventory;
     }
 
+    public void getOrgan(String model) {
+        for (CyberneticOrgan organ : inventory) {
+            if (organ.getModel().equals(model)) {
+                System.out.println(organ.getDetails());
+                return;
+            }
+        }
+        System.out.println(model + " not found in the Inventory.");
+
+    }
+
     public String removeOrgan(String model) {
         for (CyberneticOrgan organ : inventory) {
             if (organ.getModel().equalsIgnoreCase(model)) {
