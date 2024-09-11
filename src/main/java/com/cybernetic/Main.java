@@ -6,6 +6,8 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
 
+        System.out.println("Welcome to the Cybernetic Organ Management System!");
+
         CyberneticOrgan organ1 = new CyberneticOrgan("ORG001","CyberHeartX1","Pumps blood","Type 0");
         CyberneticOrgan organ2 = new CyberneticOrgan("ORG002","CyberEyeV2","Enhanced vision","Type A");
         OrganInventory inventory = new OrganInventory();
@@ -13,7 +15,7 @@ public class Main {
         inventory.addOrgan(organ1);
         inventory.addOrgan(organ2);
 
-        System.out.println("Organs in the Inventory:");
+        System.out.println("\nOrgans in the Inventory:");
         ArrayList<CyberneticOrgan> organs = inventory.getOrganList();
         for (CyberneticOrgan organ : organs) {
             System.out.println(organ.getDetails());

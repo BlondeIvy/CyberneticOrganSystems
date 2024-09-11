@@ -21,9 +21,9 @@ public class Patient {
     public String addOrgan(CyberneticOrgan organ) {
         if (organTally < installedOrgans.length) {
             installedOrgans[organTally++] = organ;
-            return " The Organ added to " + name + "'s Installed Organs List.";
+            return "\nThe Organ added to " + name + "'s Installed Organs List.";
         }
-        return " There is no more space left in the Installed Organs List.";
+        return "\nThere is no more space left in the Installed Organs List.";
     }
 
     public ArrayList<CyberneticOrgan> getOrganList() {

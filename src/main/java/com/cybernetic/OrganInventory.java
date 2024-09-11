@@ -13,7 +13,7 @@ public class OrganInventory {
 
     public void addOrgan(CyberneticOrgan organ) {
         inventory.add(organ);
-        System.out.println("The Organ has been successfully added to the Inventory.");
+        System.out.println("\nThe Organ has been successfully added to the Inventory.");
     }
 
     public ArrayList<CyberneticOrgan> getOrganList() {
@@ -24,7 +24,7 @@ public class OrganInventory {
         for (CyberneticOrgan organ : inventory) {
             if (organ.getModel().equalsIgnoreCase(model)) {
                 inventory.remove(organ);
-                System.out.println("The Organs has successfully been removed from the Inventory.");
+                System.out.println("\nThe Organs has successfully been removed from the Inventory.");
             }
         }
         return model + " not found in the Inventory.";
