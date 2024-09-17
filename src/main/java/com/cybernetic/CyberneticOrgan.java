@@ -7,6 +7,11 @@ public class CyberneticOrgan
     private String functionality;
     private boolean compatibility;
     
+    public String getModel()
+    {
+        return this.model;
+    }
+
     public String getDetails()
     {
         return "0";
@@ -15,6 +20,11 @@ public class CyberneticOrgan
     public boolean isCompatible(String patientCompatibility)
     {
         return true;
+    }
+
+    public String getFunctionality() 
+    {
+        throw new UnsupportedOperationException("Unimplemented method 'getFunctionality'");
     }
 
     
