@@ -28,7 +28,6 @@ public class OrganInventory {
             }
         }
         System.out.println(model + " not found in the Inventory.");
-
     }
 
     public String removeOrgan(String model) {
