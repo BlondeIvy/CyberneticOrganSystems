@@ -2,6 +2,8 @@ package com.cyberorgansystem;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 public class OrganInventory {
     private ArrayList<CyberneticOrgan> inventory;
@@ -57,4 +59,53 @@ public class OrganInventory {
         return byModelList;
     }
 
+    public List<CyberneticOrgan> sortOrganbyNameModelAndCompatibilityUsingBuiltInSort() {
+        ArrayList<CyberneticOrgan> sorted = new ArrayList<>(inventory);
+        Collections.sort(sorted, new Comparator<CyberneticOrgan>() {
+            @Override
+            public int compare(CyberneticOrgan o1, CyberneticOrgan o2) {
+                int modelCompare = o1.getModel().compareTo(o2.getModel());
+                if (modelCompare != 0) {
+                    return modelCompare;
+                }
+                return o1.getCompatibility().compareTo(o2.getCompatibility());
+            }
+        });
+        return sorted;
+    }
+
+    public ArrayList<CyberneticOrgan> quickSortOrganbyModelandCompatibility(ArrayList<CyberneticOrgan> unmodifiableOrganList) {
+        ArrayList<CyberneticOrgan> organList = new ArrayList<>(unmodifiableOrganList);
+        quicksort(organList, 0, organList.size() - 1);
+        return organList;
+    }
+
+    private void quicksort(ArrayList<CyberneticOrgan> organList, int lo, int hi) {
+        if (lo < hi) {
+            int pivotIndex = pivot(organList, lo, hi);
+            quicksort(organList, lo, pivotIndex - 1);
+            quicksort(organList, pivotIndex + 1, hi);
+        }
+    }
+
+    private int pivot(ArrayList<CyberneticOrgan> organnList, int lo, int hi) {
+        CyberneticOrgan pivot = organnList.get(hi);
+        int i = lo - 1;
+        for (int j = lo; j < hi; j++) {
+            if (compareOrgans(organnList.get(j), pivot) <= 0) {
+                i++;
+                Collections.swap(organnList, i, j);
+            }
+        }
+        Collections.swap(organnList, i + 1, hi);
+        return i + 1;
+    }
+
+    private int compareOrgans(CyberneticOrgan o1, CyberneticOrgan o2) {
+        int modelCompare = o1.getModel().compareTo(o2.getModel());
+        if (modelCompare != 0) return modelCompare;
+
+        return o1.getCompatibility().compareTo(o2.getCompatibility());
+
+    }
 }

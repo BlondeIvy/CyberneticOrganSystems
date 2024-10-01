@@ -26,10 +26,19 @@ public class CyberneticOrgan {
         return this.compatibility.equals(patientCompatibility);
     }
 
+    @Override
+    public String toString() {
+        return STR."CyberneticOrgan{id='\{id}', model='\{model}', functionality='\{functionality}', compatibility='\{compatibility}'}";
+    }
+
     public String getModel(){
         return model;
     }
 
     public String getFunctionality(){
         return functionality; }
+
+    public String getCompatibility(){
+        return compatibility;
+    }
 }
