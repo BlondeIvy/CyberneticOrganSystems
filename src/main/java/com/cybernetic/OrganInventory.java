@@ -88,23 +88,24 @@ public class OrganInventory {
         }
     }
 
-    private int pivot(ArrayList<CyberneticOrgan> organnList, int lo, int hi) {
-        CyberneticOrgan pivot = organnList.get(hi);
+    private int pivot(ArrayList<CyberneticOrgan> organList, int lo, int hi) {
+        CyberneticOrgan pivot = organList.get(hi);
         int i = lo - 1;
         for (int j = lo; j < hi; j++) {
-            if (compareOrgans(organnList.get(j), pivot) <= 0) {
+            if (compareOrgans(organList.get(j), pivot) <= 0) {
                 i++;
-                Collections.swap(organnList, i, j);
+                Collections.swap(organList, i, j);
             }
         }
-        Collections.swap(organnList, i + 1, hi);
+        Collections.swap(organList, i + 1, hi);
         return i + 1;
     }
 
     private int compareOrgans(CyberneticOrgan o1, CyberneticOrgan o2) {
         int modelCompare = o1.getModel().compareTo(o2.getModel());
-        if (modelCompare != 0) return modelCompare;
-
+        if (modelCompare != 0){
+            return modelCompare;
+        }
         return o1.getCompatibility().compareTo(o2.getCompatibility());
 
     }
